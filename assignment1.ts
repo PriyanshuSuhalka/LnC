@@ -1,48 +1,48 @@
-const emailEntities = [
+const emailAccounts = [
     {
-        type: "email",
-        emailAddress: "priyanshu@gmail.com",
-        provider: "outlook",
-        inboxCount: 2,
-        sentCount: 3,
-        spamCount: 6.5
+        accountType: "email",
+        address: "priyanshu@gmail.com",
+        emailProvider: "outlook",
+        inboxMessages: 2,
+        sentMessages: 3,
+        spamMessages: 6.5
     },
     {
-        type: "email",
-        emailAddress: "suhalka@yahoo.com",
-        provider: "outlook",
-        inboxCount: 20,
-        sentCount: 10,
-        spamCount: 5.5
+        accountType: "email",
+        address: "suhalka@yahoo.com",
+        emailProvider: "outlook",
+        inboxMessages: 20,
+        sentMessages: 10,
+        spamMessages: 5.5
     }
 ];
 
-function calculateEmailCarbonFootprint(emailEntity) {
-    const inboxFootprint = emailEntity.inboxCount * 0.004; 
-    const spamFootprint = emailEntity.spamCount * 0.0003; 
-    const sentFootprint = emailEntity.sentCount * 0.05;   
+function calculateCarbonFootprintForEmail(emailAccount) {
+    const inboxEmission = emailAccount.inboxMessages * 0.004; 
+    const spamEmission = emailAccount.spamMessages * 0.0003; 
+    const sentEmission = emailAccount.sentMessages * 0.05;   
 
-    const totalFootprint = inboxFootprint + spamFootprint + sentFootprint;
+    const totalEmission = inboxEmission + spamEmission + sentEmission;
 
     return {
-        email: emailEntity.emailAddress,
-        provider: emailEntity.provider,
-        inboxFootprint: `${inboxFootprint.toFixed(4)} KG CO2`,
-        sentFootprint: `${sentFootprint.toFixed(4)} KG CO2`,
-        spamFootprint: `${spamFootprint.toFixed(4)} KG CO2`,
-        totalFootprint: `${totalFootprint.toFixed(4)} KG CO2`
+        emailAddress: emailAccount.address,
+        emailProvider: emailAccount.emailProvider,
+        inboxEmission: `${inboxEmission.toFixed(4)} KG CO2`,
+        sentEmission: `${sentEmission.toFixed(4)} KG CO2`,
+        spamEmission: `${spamEmission.toFixed(4)} KG CO2`,
+        totalEmission: `${totalEmission.toFixed(4)} KG CO2`
     };
 }
 
-function calculateCarbonFootprint(entityType, entity) {
-    if (entityType === "email") {
-        return calculateEmailCarbonFootprint(entity);
+function calculateCarbonFootprintByType(accountType, accountData) {
+    if (accountType === "email") {
+        return calculateCarbonFootprintForEmail(accountData);
     } else {
-        return "No data available for this entity type.";
+        return "No data available for this account type.";
     }
 }
 
-emailEntities.forEach(entity => {
-    const result = calculateCarbonFootprint(entity.type, entity);
-    console.log(result);
+emailAccounts.forEach(account => {
+    const emissionReport = calculateCarbonFootprintByType(account.accountType, account);
+    console.log(emissionReport);
 });
