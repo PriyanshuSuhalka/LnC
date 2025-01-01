@@ -1,0 +1,12 @@
+Problem Domain              Solution Domain
+
+show video                  is project created
+close video                 is video shown
+show video                  is profile created
+submit project              save progress and validate
+signup                      create account if it does'nt exist
+select multiple choices     render chips
+unselect choices            remove chips
+component                   fetch xml(component which renders at client side)
+enable api call for field   site settings
+component                   content snippet(component which renders at server side)
