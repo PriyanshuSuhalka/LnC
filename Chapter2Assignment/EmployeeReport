@@ -1,0 +1,43 @@
+class Employee {
+    constructor(
+        public id: number,
+        public name: string,
+        public department: string,
+        private working: boolean
+    ) {}
+
+    isWorking(): boolean {
+        return this.working;
+    }
+
+    terminate(): void {
+        this.working = false;
+        console.log(`${this.name} is no longer working.`);
+    }
+}
+
+class EmployeeDatabase {
+    save(employee: Employee): void {
+        console.log(`Saved: ${employee.name}`);
+    }
+}
+
+class EmployeeReport {
+    toXML(employee: Employee): string {
+        return `<employee><id>${employee.id}</id><name>${employee.name}</name><department>${employee.department}</department></employee>`;
+    }
+
+    toCSV(employee: Employee): string {
+        return `${employee.id},${employee.name},${employee.department}`;
+    }
+}
+
+const employee = new Employee(1, "Priyanshu Suhalka", "Power Platform", true);
+const database = new EmployeeDatabase();
+const report = new EmployeeReport();
+
+database.save(employee);
+console.log(report.toXML(employee));
+console.log(report.toCSV(employee));
+console.log(employee.isWorking());
+employee.terminate();
