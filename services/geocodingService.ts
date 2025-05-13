@@ -1,13 +1,14 @@
-import { GeocodingApi, GeocodeResponse } from "../api/geocodingApi";
+import { GeocodeResponse } from "../api/geocodingApi";
+import { GeocodingAdapter } from "../adapters/geocodingAdapter";
 
 export class GeocodingService {
-  private geocodingApi = new GeocodingApi();
+  private geocodingAdapter = new GeocodingAdapter();
 
   async getLatLong(place: string): Promise<GeocodeResponse> {
     if (!place || place.trim() === "") {
       throw new Error("Place name cannot be empty.");
     }
 
-    return this.geocodingApi.getCoordinates(place);
+    return this.geocodingAdapter.getCoordinates(place);
   }
 }
