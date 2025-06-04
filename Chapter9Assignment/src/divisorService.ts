@@ -1,5 +1,18 @@
 export class DivisorService {
+  countDivisors(n: number): number {
+    let count = 0;
+    for (let i = 1; i * i <= n; i++) {
+      if (n % i === 0) {
+        count += (i * i === n) ? 1 : 2;
+      }
+    }
+    return count;
+  }
+
   findMatchingDivisors(numbers: number[]): number[] {
-    return [1]; // dummy implementation for test 1
+    return numbers.map(n => {
+      const reversed = parseInt(n.toString().split("").reverse().join(""), 10);
+      return this.countDivisors(n) === this.countDivisors(reversed) ? 1 : 0;
+    });
   }
 }
