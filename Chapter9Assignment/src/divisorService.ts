@@ -11,6 +11,7 @@ export class DivisorService {
 
   findMatchingDivisors(numbers: number[]): number[] {
     return numbers.map(n => {
+      if (n <= 0) throw new Error("Each number must be a positive integer.");
       const reversed = parseInt(n.toString().split("").reverse().join(""), 10);
       return this.countDivisors(n) === this.countDivisors(reversed) ? 1 : 0;
     });

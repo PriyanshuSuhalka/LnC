@@ -19,5 +19,9 @@ describe("DivisorService", () => {
     expect(service.findMatchingDivisors([100])).toEqual([0]);
   });
 
+  test("should throw error for 0", () => {
+    expect(() => service.findMatchingDivisors([0])).toThrow("Each number must be a positive integer.");
+  });
+
 
 });
