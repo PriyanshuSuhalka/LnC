@@ -15,4 +15,9 @@ describe("DivisorService", () => {
     expect(service.findMatchingDivisors([15])).toEqual([1]);
   });
 
+  test("should return 0 for 100 (100 has 9, 1 has 1 divisor)", () => {
+    expect(service.findMatchingDivisors([100])).toEqual([0]);
+  });
+
+
 });
