@@ -23,5 +23,8 @@ describe("DivisorService", () => {
     expect(() => service.findMatchingDivisors([0])).toThrow("Each number must be a positive integer.");
   });
 
+  test("should throw error for negative input", () => {
+    expect(() => service.findMatchingDivisors([-5])).toThrow("Each number must be a positive integer.");
+  });
 
 });
