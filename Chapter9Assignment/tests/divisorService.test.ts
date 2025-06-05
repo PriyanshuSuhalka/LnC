@@ -8,5 +8,9 @@ describe("DivisorService", () => {
     expect(DivisorService.countDivisors(2)).toBe(2);
   });
 
+  test("should return 9 for perfect square n = 36", () => {
+    expect(DivisorService.countDivisors(36)).toBe(9);
+  });
+
   });
 });
